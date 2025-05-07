@@ -1,3 +1,17 @@
+<?php 
+session_start();
+
+require_once 'functions.php';
+
+$risultato = gestisciInput();
+
+if ($risultato !== null) {
+    $_SESSION['risultato'] = $risultato;
+    header('Location: result.php');
+    exit;
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -14,14 +28,6 @@
             <input type="number" id="lunghezza" name="lunghezza" min="6" required>
             <button type="submit">Genera Password</button>
         </form>
-        <?php 
-require_once 'functions.php';
-$risultato = gestisciInput();
-if ($risultato !== null) {
-    echo $risultato;
-}
-
-?>
     </div>
 </body>
 </html>
